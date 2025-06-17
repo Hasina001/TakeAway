@@ -2,22 +2,28 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EventsController } from './event.controller';
-import { Event } from './event.entity';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { BlogModule } from './blog/blog.module';
+
 
 @Module({
-  //install TypeOrm : npm i --save @nestjs/typeorm typeorm mysql
-  imports: [TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: '127.0.0.1',
-    port: 3306,
-    username: 'root',
-    password: 'example',
-    database: 'nest-events',
-    entities: [Event],
-    synchronize: true
-  }),
-TypeOrmModule.forFeature([Event])],
+  imports: [
+    // chargement du fichier .env
+    ConfigModule.forRoot({
+      isGlobal:true, // rend disponible partout sans avoir besoin de le reimporter
+    }),
+
+    //connexion à MongoDB avec la variable d'environnement
+    MongooseModule.forRootAsync({
+      useFactory: (configService:ConfigService) => ({
+        uri:configService.get<string>('MONGODB_URL'),
+      }),
+      inject: [ConfigService]
+    }),
+
+    BlogModule
+  ],
   controllers: [AppController, EventsController],
   providers: [AppService],
 })
