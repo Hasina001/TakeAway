@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+<<<<<<< HEAD
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -24,6 +25,11 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     UsersModule,
   ],
+=======
+
+@Module({
+  imports: [],
+>>>>>>> 541263d03452802ebcd7b4fbab46564d901ad791
   controllers: [AppController],
   providers: [AppService],
 })

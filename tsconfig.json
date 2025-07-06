@@ -10,15 +10,24 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+<<<<<<< HEAD
     "paths": {
       "@prisma/*": ["generated/prisma/*"]
     },
+=======
+>>>>>>> 541263d03452802ebcd7b4fbab46564d901ad791
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+<<<<<<< HEAD
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false
+=======
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "noFallthroughCasesInSwitch": true
+>>>>>>> 541263d03452802ebcd7b4fbab46564d901ad791
   }
 }
