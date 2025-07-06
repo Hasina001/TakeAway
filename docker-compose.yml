@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodbe
+    envireonment:
+      MONGO_INITDB_ROOT_USERNAME: rodinwitman9
+      MONGO_INITDB_ROOT_PASSWORD: AELQlpSg27hNU25h
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  prisma-studio:
+    image: prismagraphql/prisma-studio:latest
+    container_name: prisma-studio
+    ports:
+      - "5555:5555"
+    depends_on:
+      - mongodb
+    environment:
+      DATABASE_URL: "mongodb+srv://rodinwitman9:AELQlpSg27hNU25h@takeaway.s8yx0rd.mongodb.net/?retryWrites=true&w=majority&appName=takeAway" 
+
+volumes:
+  mongodb_data:
