@@ -4,6 +4,6 @@ type NavLink = {
 }
 
 export const links:NavLink[] = [
-    {href: '/users/login', label: 'Login'},
-    {href: '/users/register/', label: 'Register'}
-]
+    {href: '/login', label: 'Login'},
+    {href: '/signup', label: 'Register'}
+] 
